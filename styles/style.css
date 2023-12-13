@@ -89,6 +89,47 @@ a:hover {
 	color: var(--color-light-gray);
 }
 
+p {
+	margin-block: 0;
+}
+
+p:not([class]):not(:last-child) {
+	margin-bottom: 24px;
+}
+
+.title-medium {
+	font-size: clamp(20px, 2.08vw, 40px);
+	line-height: 1.3;
+	color: var(--color-light);
+}
+
+.backdrop-title {
+	position: relative;
+	z-index: 2;
+}
+
+.backdrop-title::before {
+	content: '';
+	position: absolute;
+	display: block;
+	right: calc(100% + 8px);
+	width: 26px;
+	aspect-ratio: 1;
+	background: url('../icons/plus.svg') center/contain no-repeat;
+}
+
+.backdrop-title::after {
+	content: attr(data-title);
+	font-size: 2.8em;
+	position: absolute;
+	z-index: -1;
+	top: -0.45em;
+	left: -0.6em;
+	font-family: var(--font-family-accent);
+	color: transparent;
+	-webkit-text-stroke: 1px var(--color-light-gray);
+}
+
 .button {
 	display: inline-flex;
 	height: 38px;
@@ -103,10 +144,36 @@ a:hover {
 	background-color: var(--color-light);
 	border: none;
 	white-space: nowrap;
+	text-decoration: none;
 }
 
 .button:hover {
 	background-color: var(--color-light-gray)
+}
+
+.button.transparent {
+	position: relative;
+	height: var(--input-height);
+	padding-left: 30px;
+	padding-right: 80px;
+	background-color: transparent;
+	border: var(--border);
+}
+
+.button.transparent:hover {
+	color: var(--color-dark);
+	background-color: var(--color-light-gray);
+}
+
+.button.transparent::after {
+	content: '';
+	height: 100%;
+	position: absolute;
+	aspect-ratio: 1;
+	background: url('../icons/arrow-top-right.svg') center/70% no-repeat;
+	border: var(--border);
+	border-radius: 50%;
+	right: 0;
 }
 
 .header {
@@ -250,6 +317,47 @@ a:hover {
 	border-color: var(--color-light-gray);
 }
 
+.motivation__list-item:nth-child(even) {
+	background-color: var(--color-dark-alternate);
+}
+
+.motivation__list-item:nth-child(even) .motivation__card{
+	flex-direction: row-reverse;
+}
+
+.motivation__card {
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	column-gap: clamp(30px, 10.4vw, 200px);
+}
+
+.motivation__card-image {
+	margin-block: -60px;
+}
+
+.motivation__card-body {
+	padding-left: 35px;
+}
+
+.motivation__card-description {
+	max-width: 400px;
+}
+
+.motivation__card-description:not(:last-child) {
+	margin-bottom: 37px;
+}
+
+.motivation__card-title:not(:last-child) {
+	margin-bottom: 14px;
+}
+
+@media (max-width: 1919px) {
+	.motivation__card-image {
+		margin-block: -20px;
+	}
+}
+
 @media (max-width: 1024px) {
 	.header {
 		flex-wrap: wrap;
@@ -272,6 +380,16 @@ a:hover {
 
 	.banner {
 		row-gap: 10px;
+	}
+
+	.motivation__card {
+		padding-block: 50px;
+	}
+
+	.motivation__card-image {
+		max-width: 30%;
+		height: auto;
+		margin-block: 0;
 	}
 }
 
@@ -302,5 +420,26 @@ a:hover {
 
 	.banner__info::before {
 		margin-right: 10px;
+	}
+
+	.motivation__card {
+		flex-direction: column-reverse;
+		row-gap: 30px;
+	}
+
+	.motivation__card-image {
+		max-width: 60%;
+	}
+
+	.motivation__card {
+		padding-block: 30px;
+	}
+
+	.motivation__card-description:not(:last-child) {
+		margin-bottom: 20px;
+	}
+
+	.motivation__list-item:nth-child(even) .motivation__card{
+		flex-direction: column-reverse;
 	}
 }
