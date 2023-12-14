@@ -75,6 +75,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
 	font-weight: 700;
 	text-transform: uppercase;
+	color: var(--color-light);
 }
 
 a, button, input, textarea, svg * {
@@ -100,7 +101,6 @@ p:not([class]):not(:last-child) {
 .title-medium {
 	font-size: clamp(20px, 2.08vw, 40px);
 	line-height: 1.3;
-	color: var(--color-light);
 }
 
 .backdrop-title {
@@ -352,9 +352,45 @@ p:not([class]):not(:last-child) {
 	margin-bottom: 14px;
 }
 
+.trainings {
+	position: relative;
+	max-width: 1920px;
+	margin-inline: auto;
+	padding-top: 70px;
+	padding-bottom: 120px;
+	background-color: var(--color-dark);
+}
+
+.trainings__list {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	gap: 60px;
+}
+
+.trainings__item {
+	--trainingItemBgIconSize: 80px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	row-gap: 32px;
+	padding-top: var(--trainingItemBgIconSize);
+	background: url('../icons/transparent-arrow.svg') 100% 0/var(--trainingItemBgIconSize) no-repeat; 
+}
+
+.trainings__item-title {
+	font-size: 16px;
+}
+
 @media (max-width: 1919px) {
 	.motivation__card-image {
 		margin-block: -20px;
+	}
+}
+
+@media (max-width: 1280px) {
+	.trainings__list {
+		grid-template-columns: repeat(3, 1fr);
 	}
 }
 
@@ -441,5 +477,20 @@ p:not([class]):not(:last-child) {
 
 	.motivation__list-item:nth-child(even) .motivation__card{
 		flex-direction: column-reverse;
+	}
+
+	.trainings__list {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 30px;
+	}
+
+	.trainings__item {
+		--trainingItemBgIconSize: 50px;
+
+		row-gap: 10px;
+	}
+
+	.trainings__image {
+		max-width: 120px;
 	}
 }
